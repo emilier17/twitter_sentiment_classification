@@ -24,21 +24,18 @@ Pour le prétraitement et l'extraction des caractéristiques:
 | -------- | ------- |
 | test.csv | données brutes : tweet et sentiment (étiquettes) |
 | train.csv | données brutes : tweet, sans sentiment |
-| test_data.csv | données prétraitées avec caractéristiques |
 | emojis_emoticons.txt | lexique personnalisé d'émojis et d'émoticônes positifs et négatifs |
 | stopwords.txt | lexique personnalisé de stopwords |
-| data_preparation.py | script pour générer test_data.csv et training_data.csv |
+| data_preparation.py | script pour effectuer le prétraitement et l'extraction des caractéristiques |
 
-Pour l'entraînement et l'évaluation des modèles:
-- training_data.csv
-- test_predictions.csv
-- training.py
+Pour l'entraînement et l'évaluation des modèles classifieurs:
 
 | Fichier  | Utilité |
 | -------- | ------- |
-| training_data.csv | données prétraitées avec caractéristiques, sans sentiment |
-| test_predictions.csv | données brutes : tweet, sans sentiment |
-| training.py | script pour construire et évaluer les classifieurs, générer test_predictions.csv |
+| test_data.csv | données prétraitées avec caractéristiques. Généré par data_preparation.py |
+| training_data.csv | données prétraitées avec caractéristiques, sans sentiment. Généré par data_preparation.py|
+| test_predictions.csv | données brutes : tweet, sans sentiment. Généré par training.py |
+| training.py | script pour construire et évaluer les classifieurs |
 
 
 ## Mise en place
