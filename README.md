@@ -18,24 +18,24 @@ Analyse sentimentale
 
 ## Fichiers inclus
 
-Pour le prétraitement et l'extraction des caractéristiques:
+Pour le prétraitement et l'extraction des caractéristiques (data_preparation.py):
 
-| Fichier  | Utilité |
-| -------- | ------- |
-| test.csv | données brutes : tweet et sentiment (étiquettes) |
-| train.csv | données brutes : tweet, sans sentiment |
-| emojis_emoticons.txt | lexique personnalisé d'émojis et d'émoticônes positifs et négatifs |
-| stopwords.txt | lexique personnalisé de stopwords |
-| data_preparation.py | script pour effectuer le prétraitement et l'extraction des caractéristiques |
+| Fichier  | Type    | Utilité |
+| -------- | ------- | ------- |
+| test.csv | Input | données brutes : tweet et sentiment (étiquettes) |
+| train.csv | Input | données brutes : tweet, sans sentiment |
+| emojis_emoticons.txt | Input | lexique personnalisé d'émojis et d'émoticônes positifs et négatifs |
+| stopwords.txt | Input | lexique personnalisé de stopwords |
+| test_data.csv | Output | données prétraitées avec caractéristiques |
+| training_data.csv | Output | données prétraitées avec caractéristiques, sans sentiment |
 
-Pour l'entraînement et l'évaluation des modèles classifieurs:
+Pour l'entraînement et l'évaluation des modèles classifieurs (training.py):
 
-| Fichier  | Utilité |
-| -------- | ------- |
-| test_data.csv | données prétraitées avec caractéristiques. Généré par data_preparation.py |
-| training_data.csv | données prétraitées avec caractéristiques, sans sentiment. Généré par data_preparation.py|
-| test_predictions.csv | données brutes : tweet, sans sentiment. Généré par training.py |
-| training.py | script pour construire et évaluer les classifieurs |
+| Fichier  | Type    | Utilité |
+| -------- | ------- | ------- |
+| test_data.csv | Input | données prétraitées avec caractéristiques |
+| training_data.csv | Input | données prétraitées avec caractéristiques, sans sentiment |
+| test_predictions.csv | Output | test_data.csv avec prédictions de sentiment |
 
 
 ## Mise en place
@@ -44,13 +44,8 @@ Si ce n'est pas déjà fait, télécharger la version adaptée de Python pour vo
 
 1. Télécharger le dossier. Changer le working directory à ce dossier. 
 
-2. Télécharger le module requis:
-```
-pip install afinn
-```
-
-3. Créer et activer un environnement virtuel:
-Unix style:
+2. Créer et activer un environnement virtuel:
+Unix:
 ```
 python3 -m venv venv
 source venv/bin/activate
@@ -61,12 +56,17 @@ python -m venv venv
 venv\Scripts\activate.bat
 ```
 
+3. Télécharger les modules requis:
+```
+pip install -r requirements.txt
+```
+
 4. Ouvrir une session interactive python:
 ```
 python
 ```
 
-4. Télécharger les lexiques requis:
+4. Télécharger les lexiques requis dans la session interactive python:
 
 ```
 import nltk
@@ -75,19 +75,29 @@ nltk.download('opinion_lexicon')
 nltk.download('punkt')
 ```
 
+5. Quitter la session interactive python:
+```
+exit()
+```
+
 ## Usage
 
 Une fois la mise en place complétée (section précédente). S'assurer que tous les fichiers se trouvent dans le même dossier (voir section fichiers inclus). 
 
-1. Faire le prétraitement des données. Dans le dossier:
+1. Faire le prétraitement des données. Dans l'environnement virtuel:
 ```
 python data_preparation.py
 ```
-Pour faire le prétraitement des données tests, il suffit de changer le nom du input_csv (ligne 88 de data_preparation.py) à test.csv. Similairement, changer le nom du output_csv (ligne 89).
+Pour faire le prétraitement des données tests, il suffit de changer le nom du input_csv (ligne 88 de data_preparation.py) à 'test.csv'. Similairement, changer le nom du output_csv (ligne 89).
 
 2. Construire et évaluer les classifieurs:
 ```
 python training.py
+```
+
+3. Quitter l'environnement virtuel:
+```
+deactivate
 ```
 
 ## Technologies utilisées

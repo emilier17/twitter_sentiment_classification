@@ -278,7 +278,7 @@ print(test_df[["SentimentText", "PredictedSentiment"]].head(20))
 
 # Save predictions
 pred_df = test_df[["ItemID", "SentimentText", "PredictedSentiment"]]
-pred_df.to_csv("test_predictions.csv")
+pred_df.to_csv("test_predictions.csv", index=False)
 
 
 
