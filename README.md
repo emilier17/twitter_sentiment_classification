@@ -50,11 +50,20 @@ pip install afinn
 ```
 
 3. Créer et activer un environnement virtuel:
+Unix style:
 ```
 python3 -m venv venv
-```
-```
 source venv/bin/activate
+```
+Windows (command prompt):
+```
+python -m venv venv
+venv\Scripts\activate.bat
+```
+
+4. Ouvrir une session interactive python:
+```
+python
 ```
 
 4. Télécharger les lexiques requis:
